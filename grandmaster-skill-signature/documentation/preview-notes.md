@@ -48,3 +48,17 @@ Audio was **measured, not heard**: loudness, peaks and timing were checked with 
 1. Set `previewWatermark` to `false` (the variable on `index.html`).
 2. Render: `npx hyperframes@0.9.94 render -q delivery --fps 30 -o exports/grandmaster-skill-signature-final.mp4` (H.264 + AAC 48 kHz).
 3. Measure: `npx hyperframes audio exports/… --json`, and play it through once on a phone.
+
+---
+
+## FINAL RENDER — 25 Nov 2026 (after "APPROVED — RENDER FINAL VIDEO")
+
+| File | Spec |
+|---|---|
+| `exports/grandmaster-skill-signature-FINAL-master.mp4` | H.264 High, 1080 × 1920, 30 fps, yuv420p, 13.4 Mbps, AAC-LC 48 kHz stereo, 86.0 s, 144 MB — HyperFrames `-q delivery` |
+| `exports/grandmaster-skill-signature-FINAL-social.mp4` | Same picture re-encoded for social / WhatsApp: H.264 CRF 19, max 6 Mbps, AAC 192 kbps 48 kHz, faststart, 56 MB |
+
+Measured on the master: −13.3 LUFS integrated, −1.0 dBFS peak, LRA 9.0 LU. Full decode with no errors. Watermark off. Frames checked every 4 s.
+The video files are not in git (public repository).
+
+The draft watermarked preview was stopped at 27 % when the approval arrived, so no complete preview MP4 exists. The client approved from the snapshot contact sheets.
