@@ -62,3 +62,23 @@ Measured on the master: −13.3 LUFS integrated, −1.0 dBFS peak, LRA 9.0 LU. F
 The video files are not in git (public repository).
 
 The draft watermarked preview was stopped at 27 % when the approval arrived, so no complete preview MP4 exists. The client approved from the snapshot contact sheets.
+
+---
+
+## FINAL RENDER v2 — 25 Nov 2026 (client revision: logos, more energy, less "AI" sound, zoom in/out)
+
+| File | Spec |
+|---|---|
+| `exports/grandmaster-skill-signature-FINAL-v2-master.mp4` | H.264 High, 1080 × 1920, 30 fps, 13.5 Mbps, AAC-LC 48 kHz stereo, 86.0 s, 145 MB — `-q delivery` (69 min render, software GL) |
+| `exports/grandmaster-skill-signature-FINAL-v2-social.mp4` | CRF 19, max 6 Mbps, AAC 192 kbps, faststart, 57 MB |
+
+Measured on the master: −13.0 LUFS integrated, −1.2 dBFS true peak, LRA 8.6 LU. Full decode clean. Contact sheet checked every 2 s.
+
+What changed from v1:
+
+1. **Official logos** (supplied by the client as images, cropped only, colours and shapes untouched, shown on white cards with a gold edge):
+   Academy Pak Su Den shield on the title (12.2 s) and after the climax (72.2 s); the PAK SU DEN "Bukan Sekadar Rawatan" logo as the end-card hero (80 s) with the Academy shield below it. The text lockup and the separate big tagline were removed because the logo carries them.
+2. **Zoom in / zoom out on every cut**: punch zoom-outs (1.16 → 1.0) on the beat, slow zoom-ins through the climax, logo zoom-ins with a gold ring shock-wave.
+3. **Graphics and mentions**: the 2025 award stack (Overall Winner Singapore, Best Performance Singapore, 3rd Place Paris, 1st Place Malaysia — read from the poster in a photo, **to be confirmed**), the course topics from the class slide (Teknik, Persembahan, Adab Pertandingan), and seven technique call-outs (Precision, Touch, Leverage, Balance, Counter-weight, Control, Flow).
+4. **Sound**: all synthetic whooshes and sparkles removed. Recorded mouse clicks and key presses with small pitch and level variation on each graphic; low impacts only on the big moments.
+5. **Score v2**: still original and self-composed, but with humanised timing and velocity on the drums, hand claps on the backbeats, tom fills, darker and quieter braams, and strings in place of the synth choir.
