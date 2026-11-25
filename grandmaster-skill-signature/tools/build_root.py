@@ -66,6 +66,11 @@ for s in EDL["shots"]:
         s0, s1, y0, y1 = MOVES[n]
         target = f"#cam-{n:02d}" if "src" in s else f"#{sid}-frame"
         tl.append(f'      tl.fromTo("{target}", {{ scale: {s0}, y: {y0} }}, {{ scale: {s1}, y: {y1}, duration: {dur}, ease: "none" }}, {start});')
+    if "src" in s and n not in MOVES and n not in PUNCH:
+        if s["scene"] == "s6-climax" and n % 2 == 0:
+            tl.append(f'      tl.fromTo("#cam-{n:02d}", {{ scale: 1.0 }}, {{ scale: 1.14, duration: {dur}, ease: "power2.in" }}, {start});  // zoom in')
+        else:
+            tl.append(f'      tl.fromTo("#cam-{n:02d}", {{ scale: 1.16 }}, {{ scale: 1.0, duration: {min(0.6, dur)}, ease: "expo.out" }}, {start});  // punch zoom-out on the cut')
     if n in IRIS:
         tl.append(f'      tl.fromTo("#cam-{n:02d}", {{ clipPath: "circle(0% at 50% 44%)" }}, {{ clipPath: "circle(78% at 50% 44%)", duration: {IRIS[n]}, ease: "power3.out" }}, {start});')
     if n in PUNCH:
@@ -90,27 +95,68 @@ for i, d in enumerate(EDL["dialogue"]):
 # music: full level, ducked under the two coaching clips (43.6–59.4)
 duck = '{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:1},{&quot;t&quot;:43.3,&quot;v&quot;:1},{&quot;t&quot;:43.7,&quot;v&quot;:0.3},{&quot;t&quot;:59.3,&quot;v&quot;:0.3},{&quot;t&quot;:59.9,&quot;v&quot;:1},{&quot;t&quot;:86,&quot;v&quot;:1}]}]}'
 
-SFX_LEN = {"whoosh": 0.57, "whoosh-short": 0.57, "sparkle": 1.8, "impact-bass-1": 2.1, "impact-bass-2": 2.59, "whoosh-cinematic": 5.54}
-SFX = [  # (id, file, start, volume, rate) — start = picture time − file peak offset + 1 frame
-    ("sfx-hook-slam", "whoosh", 1.87, 0.45, 1.0),
-    ("sfx-to-master", "whoosh", 3.85, 0.40, 0.85),
-    ("sfx-title-shimmer", "sparkle", 12.62, 0.35, 1.0),
-    ("sfx-ch01", "whoosh-short", 23.87, 0.32, 1.0),
-    ("sfx-ch02", "whoosh", 29.87, 0.32, 1.15),
-    ("sfx-ch03", "whoosh-short", 36.85, 0.32, 0.9),
-    ("sfx-climax-impact", "impact-bass-1", 59.96, 0.55, 1.0),
-    ("sfx-climax-line1", "whoosh", 63.87, 0.38, 1.0),
-    ("sfx-climax-line2", "whoosh-short", 67.87, 0.38, 1.1),
-    ("sfx-to-legacy", "whoosh-cinematic", 71.53, 0.42, 1.0),
-    ("sfx-logo-impact", "impact-bass-2", 79.92, 0.5, 1.0),
-    ("sfx-logo-shimmer", "sparkle", 80.45, 0.4, 1.0),  # lane 23 (overlaps the impact)
+SFX_LEN = {"click": 0.37, "click-soft": 0.37, "key-press": 0.43, "pop": 0.72, "impact-bass-1": 2.1, "impact-bass-2": 2.59}
+SFX = [  # (id, file, start, volume, rate) — start = picture time − file peak offset + 1 frame; real recorded clicks, no synth tones
+    ("sfx-01-hook", "impact-bass-1", 0.0, 0.5, 1.0),
+    ("sfx-02-cut", "click", 0.463, 0.38, 1.0),
+    ("sfx-03-cut", "click", 0.953, 0.36, 0.88),
+    ("sfx-04-cut", "click", 1.47, 0.38, 1.12),
+    ("sfx-05-mastery", "impact-bass-2", 1.923, 0.55, 1.0),
+    ("sfx-06-flash", "click", 3.959, 0.32, 0.94),
+    ("sfx-07-name", "key-press", 4.408, 2.2, 1.0),
+    ("sfx-08-roles", "key-press", 4.915, 2.0, 1.1),
+    ("sfx-09-award1", "click", 8.113, 0.36, 1.0),
+    ("sfx-10-award2", "click", 8.603, 0.36, 0.88),
+    ("sfx-11-award3", "click", 9.12, 0.36, 1.12),
+    ("sfx-12-award4", "click", 9.609, 0.36, 0.94),
+    ("sfx-13-academy-logo", "impact-bass-1", 12.263, 0.42, 1.0),
+    ("sfx-14-title", "click", 12.713, 0.36, 1.0),
+    ("sfx-15-tag", "key-press", 13.448, 2.2, 0.88),
+    ("sfx-16-tag", "key-press", 13.966, 2.2, 1.12),
+    ("sfx-17-tag", "key-press", 14.453, 2.2, 0.94),
+    ("sfx-18-credit", "click", 16.157, 0.32, 0.92),
+    ("sfx-19-slide-chip", "key-press", 19.158, 2.2, 1.0),
+    ("sfx-20-slide-chip", "key-press", 19.648, 2.2, 0.88),
+    ("sfx-21-slide-chip", "key-press", 20.166, 2.2, 1.12),
+    ("sfx-22-ch01", "impact-bass-2", 23.923, 0.35, 1.0),
+    ("sfx-23-ch01", "click", 24.263, 0.36, 1.0),
+    ("sfx-24-chip", "click", 26.868, 0.3, 1.08),
+    ("sfx-25-chip", "click", 28.157, 0.3, 0.92),
+    ("sfx-26-iris", "click", 29.952, 0.4, 0.86),
+    ("sfx-27-ch02", "key-press", 30.258, 2.0, 1.0),
+    ("sfx-28-chip", "click", 32.919, 0.3, 1.1),
+    ("sfx-29-chip", "click", 34.059, 0.3, 0.95),
+    ("sfx-30-chip", "click", 35.566, 0.3, 1.04),
+    ("sfx-31-iris", "click", 36.952, 0.4, 0.86),
+    ("sfx-32-ch03", "key-press", 37.264, 2.0, 1.08),
+    ("sfx-33-chip", "click", 39.907, 0.3, 0.92),
+    ("sfx-34-chip", "click", 41.569, 0.3, 1.1),
+    ("sfx-35-drop", "impact-bass-1", 59.963, 0.6, 1.0),
+    ("sfx-36-slam", "click", 63.963, 0.4, 1.0),
+    ("sfx-37-slam", "click", 64.203, 0.4, 0.88),
+    ("sfx-38-slam", "click", 64.471, 0.4, 1.12),
+    ("sfx-39-slam", "click", 64.959, 0.4, 0.94),
+    ("sfx-40-slam", "click", 67.971, 0.4, 1.12),
+    ("sfx-41-slam", "click", 68.209, 0.4, 0.94),
+    ("sfx-42-slam", "click", 68.467, 0.4, 1.06),
+    ("sfx-43-slam", "click", 68.963, 0.4, 1.0),
+    ("sfx-44-slam", "click", 69.453, 0.4, 0.88),
+    ("sfx-45-academy-logo", "impact-bass-2", 72.123, 0.45, 1.0),
+    ("sfx-46-flash", "impact-bass-1", 73.963, 0.45, 1.0),
+    ("sfx-47-name", "key-press", 74.858, 2.0, 1.0),
+    ("sfx-48-date", "key-press", 75.565, 2.0, 1.1),
+    ("sfx-49-logo-paksuden", "impact-bass-2", 79.923, 0.55, 1.0),
+    ("sfx-50-logo", "click", 80.513, 0.36, 1.0),
+    ("sfx-51-org", "key-press", 81.358, 2.0, 1.0),
+    ("sfx-52-academy-logo", "click", 82.155, 0.38, 0.9),
+    ("sfx-53-tagline", "key-press", 82.864, 2.0, 1.08),
 ]
 sfx_html = []
 for i, (sid, f, st, vol, rate) in enumerate(SFX):
     extra = f' data-playback-rate="{rate}"' if rate != 1.0 else ""
     ln = round(SFX_LEN[f] / rate, 2)
     sfx_html.append(
-        f'    <audio id="{sid}" class="clip" data-start="{st}" data-duration="{ln}" data-track-index="{23 if sid == 'sfx-logo-shimmer' else 22}" data-volume="{vol}"{extra} '
+        f'    <audio id="{sid}" class="clip" data-start="{st}" data-duration="{ln}" data-track-index="{(24 + (i % 2)) if f.startswith('impact') else 22 + (i % 2)}" data-volume="{vol}"{extra} '
         f'data-audio-group="sfx" src="assets/sfx/{f}.mp3"></audio>'
     )
 

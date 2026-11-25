@@ -17,7 +17,7 @@ Grid: 120 BPM, 4/4, one bar = 2.0 s. Sections land on the edit's scene seams:
   74-86 Legacy      resolution to D major, end hit at 80
 
 Usage: python3 compose_score.py out.wav [variant]
-variant: "A" (default, 120 bpm D minor)
+variant: "A" (default, 120 bpm D minor). v2: humanised drums, claps, toms, darker braams, strings instead of choir.
 """
 import sys
 import numpy as np
@@ -42,7 +42,13 @@ def note(name):
     return 440.0 * 2 ** ((midi - 69) / 12)
 
 
-def place(sig, t0, gain=1.0, pan=0.0, send=0.0):
+HUMAN = np.random.default_rng(77)
+
+
+def place(sig, t0, gain=1.0, pan=0.0, send=0.0, human=0.0):
+    if human:
+        t0 = max(0.0, t0 + HUMAN.normal(0, human))
+        gain = gain * (1 + HUMAN.normal(0, 0.06))
     i0 = int(t0 * SR)
     if i0 >= N:
         return
@@ -131,6 +137,24 @@ def snare(vel=1.0, dur=0.9):
     return (nz * 0.8 + tone) * vel
 
 
+def clap(vel=1.0, dur=0.6):
+    t = tt(dur)
+    x = np.zeros(len(t))
+    for k, off in enumerate((0.0, 0.009, 0.019, 0.031)):
+        i = int(off * SR)
+        burst = bp(rng.standard_normal(len(t) - i), 800, 5200) * np.exp(-np.arange(len(t) - i) / SR / (0.012 if k < 3 else 0.16))
+        x[i:] += burst * (0.7 if k < 3 else 1.0)
+    return x * vel * 0.8
+
+
+def tom(f0=110, vel=1.0, dur=0.9):
+    t = tt(dur)
+    f = f0 * (1 + 0.45 * np.exp(-t / 0.04))
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / 0.28)
+    skin = lp(rng.standard_normal(len(t)), 1500) * np.exp(-t / 0.03) * 0.35
+    return np.tanh(1.2 * (body + skin)) * vel
+
+
 def tick(vel=1.0):
     t = tt(0.12)
     return hp(rng.standard_normal(len(t)), 7000) * np.exp(-t / 0.018) * vel
@@ -154,7 +178,7 @@ def braam(root, dur=3.2, vel=1.0):
             zi = signal.sosfilt_zi(sos) * 0
         out[i:i + blk], zi = signal.sosfilt(sos, x[i:i + blk], zi=zi)
     e = env_adsr(dur, 0.04, 0.6, 0.55, 1.4)
-    return np.tanh(2.2 * out * e) * 0.8 * vel
+    return np.tanh(1.6 * lp(out, 1400) * e) * 0.8 * vel * 0.4
 
 
 def pad_chord(freqs, dur, bright=1600, vel=1.0, a=0.7, r=1.0):
@@ -188,7 +212,7 @@ def lead(f, dur, vel=1.0):
     return x * e * vel * 0.5
 
 
-def choir(freqs, dur, vel=1.0):
+def choir_unused(freqs, dur, vel=1.0):
     t = tt(dur)
     x = np.zeros((2, len(t)))
     for k, f in enumerate(freqs):
@@ -199,6 +223,11 @@ def choir(freqs, dur, vel=1.0):
             x[ch] += bp(v, 250, 2800, 1)
     x /= len(freqs)
     return x * env_adsr(dur, 0.9, 0.3, 0.9, 1.2) * vel
+
+
+def choir(freqs, dur, vel=1.0):
+    # soft high strings instead of a synthetic "aah"
+    return pad_chord(freqs, dur, 2200, vel * 0.8, a=0.8, r=1.2)
 
 
 def pluck(f, dur=2.5, vel=1.0):
@@ -299,54 +328,54 @@ def bass(b, vel):
 # HOOK 0-4
 place(boom(), 0.0, gain=1.0, send=0.25)
 place(braam(note("D2"), 3.4, 1.0), 0.0, gain=0.55, send=0.4)
-place(pad_chord([note("D2"), note("A2"), note("D3")], 4.2, 600, 0.8, a=0.05, r=1.2), 0.0, gain=0.5, send=0.3)
+place(pad_chord([note("D2"), note("A2"), note("D3")], 4.2, 600, 0.8, a=0.05, r=1.2), 0.0, gain=0.5, send=0.3, human=0.006)
 for tb, v in ((1.0, 0.7), (1.5, 0.9)):
-    place(taiko(v), tb, gain=0.8, send=0.3)
-place(boom(2.6, 62, 30), 2.0, gain=0.85, send=0.3)
+    place(taiko(v), tb, gain=0.8, send=0.3, human=0.006)
+place(boom(2.6, 62, 30), 2.0, gain=0.85, send=0.3, human=0.006)
 place(braam(note("F2"), 2.0, 0.6), 2.0, gain=0.35, send=0.4)
 for tb, v in ((2.75, 0.5), (3.0, 0.65), (3.25, 0.8), (3.5, 0.95), (3.625, 0.8), (3.75, 1.0)):
-    place(taiko(v), tb, gain=0.75, send=0.3)
-place(reverse_swell(1.2), 2.8, gain=0.4, send=0.3)
+    place(taiko(v), tb, gain=0.75, send=0.3, human=0.006)
+place(reverse_swell(1.2), 2.8, gain=0.4, send=0.3, human=0.006)
 
 # THE MASTER 4-12 (bars 2-5)
 for b in range(2, 6):
     pad(b, 0.55, 900)
     bass(b, 0.5)
-    place(taiko(0.55), bar_t(b), gain=0.7, send=0.3)
-    place(taiko(0.35), bar_t(b, 2.5), gain=0.6, send=0.3)
+    place(taiko(0.55), bar_t(b), gain=0.7, send=0.3, human=0.006)
+    place(taiko(0.35), bar_t(b, 2.5), gain=0.6, send=0.3, human=0.006)
 place(pluck(note("D4"), 3.0, 0.4), 4.0, gain=0.4, pan=-0.2, send=0.5)
 place(pluck(note("A4"), 3.0, 0.35), 8.0, gain=0.4, pan=0.2, send=0.5)
 for i, v in enumerate((0.4, 0.5, 0.6, 0.8)):
-    place(taiko(v), 11.0 + i * 0.25, gain=0.6, send=0.3)
+    place(taiko(v), 11.0 + i * 0.25, gain=0.6, send=0.3, human=0.006)
 
 # MASTERCLASS 12-24 (bars 6-11)
-place(boom(2.8, 55, 28), 12.0, gain=0.7, send=0.3)
+place(boom(2.8, 55, 28), 12.0, gain=0.7, send=0.3, human=0.006)
 for b in range(6, 12):
     pad(b, 0.6, 1300)
     bass(b, 0.6)
     ostinato(b, 0.5 + 0.05 * (b - 6))
-    place(taiko(0.8), bar_t(b), gain=0.75, send=0.3)
-    place(taiko(0.6), bar_t(b, 2), gain=0.7, send=0.3)
+    place(taiko(0.8), bar_t(b), gain=0.75, send=0.3, human=0.006)
+    place(taiko(0.6), bar_t(b, 2), gain=0.7, send=0.3, human=0.006)
     for i in range(8):
         place(tick(0.25 if i % 2 else 0.4), bar_t(b) + i * 0.25, gain=0.35, pan=0.3)
-place(reverse_swell(1.6), 22.4, gain=0.55, send=0.3)
+place(reverse_swell(1.6), 22.4, gain=0.55, send=0.3, human=0.006)
 for i in range(8):
     place(snare(0.25 + 0.08 * i), 23.0 + i * 0.125, gain=0.35, send=0.4)
 
 # SIGNATURE 24-44 (bars 12-21)
-place(boom(), 24.0, gain=0.95, send=0.3)
+place(boom(), 24.0, gain=0.95, send=0.3, human=0.006)
 for b in range(12, 22):
     pad(b, 0.62, 1700)
     bass(b, 0.75)
     ostinato(b, 0.7, octave=2.0 if b >= 16 else 1.0, bright=3200)
     for beat, v in ((0, 1.0), (1.5, 0.6), (2, 0.85), (3, 0.5), (3.5, 0.7)):
-        place(taiko(v), bar_t(b, beat), gain=0.8, send=0.3)
+        place(taiko(v), bar_t(b, beat), gain=0.8, send=0.3, human=0.006)
     place(snare(0.85), bar_t(b, 2), gain=0.55, send=0.5)
     for i in range(16):
         place(tick(0.35 if i % 4 == 0 else 0.18), bar_t(b) + i * 0.125, gain=0.3, pan=-0.3 if i % 2 else 0.3)
     if b in (12, 14, 16, 18, 20):
         place(braam(note(ROOT[chord_for(b)]) * 2, 2.6, 0.7), bar_t(b), gain=0.38, send=0.4)
-place(reverse_swell(1.6), 42.4, gain=0.6, send=0.3)
+place(reverse_swell(1.6), 42.4, gain=0.6, send=0.3, human=0.006)
 
 # KNOWLEDGE 44-60 (bars 22-29)
 place(boom(3.0, 50, 27), 44.0, gain=0.7, send=0.4)
@@ -363,7 +392,7 @@ melody = [("A4", 44.0, 1.5), ("F4", 45.5, 0.5), ("G4", 46.0, 2.0), ("A4", 48.0, 
           ("D4", 56.0, 1.0), ("F4", 57.0, 1.0), ("A4", 58.0, 1.0), ("C#5", 59.0, 1.0)]
 for n_, t0, d in melody:
     place(lead(note(n_), d + 0.35, 0.8), t0, gain=0.45, pan=0.1, send=0.55)
-place(riser(4.0), 56.0, gain=0.55, send=0.3)
+place(riser(4.0), 56.0, gain=0.55, send=0.3, human=0.006)
 for i in range(16):
     place(snare(0.2 + 0.05 * i), 58.0 + i * 0.125, gain=0.4, send=0.4)
 
@@ -376,7 +405,7 @@ for b in range(30, 37):
     ostinato(b, 0.8, octave=2.0, bright=3600)
     for beat in range(8):
         v = 1.0 if beat % 2 == 0 else 0.65
-        place(taiko(v), bar_t(b, beat * 0.5), gain=0.85, send=0.3)
+        place(taiko(v), bar_t(b, beat * 0.5), gain=0.85, send=0.3, human=0.006)
     place(snare(0.95), bar_t(b, 1), gain=0.6, send=0.5)
     place(snare(0.95), bar_t(b, 3), gain=0.6, send=0.5)
     for i in range(16):
@@ -384,8 +413,8 @@ for b in range(30, 37):
     if b % 2 == 0:
         place(braam(note(ROOT[chord_for(b)]) * 2, 2.8, 0.95), bar_t(b), gain=0.48, send=0.4)
 for i in range(8):
-    place(taiko(0.6 + 0.05 * i), 72.0 + i * 0.25, gain=0.8, send=0.3)
-place(reverse_swell(1.4), 72.6, gain=0.6, send=0.3)
+    place(taiko(0.6 + 0.05 * i), 72.0 + i * 0.25, gain=0.8, send=0.3, human=0.006)
+place(reverse_swell(1.4), 72.6, gain=0.6, send=0.3, human=0.006)
 
 # LEGACY 74-86 (bars 37-42)
 place(boom(4.5, 55, 25), 74.0, gain=0.95, send=0.45)

@@ -8,17 +8,27 @@
     #s3-veil { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 38%, rgba(7,20,38,.55) 0%, rgba(7,20,38,.82) 70%, rgba(8,10,15,.92) 100%); }
     #s3-dip { position: absolute; inset: 0; background: #080a0f; }
     .s3-c { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; }
-    #s3-pre { top: 496px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .35em; color: #89cfff; }
-    #s3-t1 { top: 548px; font: 400 118px/1 Anton, sans-serif; color: #fff; }
-    #s3-t2 { top: 674px; font: 400 100px/1 "Bebas Neue", sans-serif; letter-spacing: .08em;
+    #s3-pre { top: 578px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .35em; color: #89cfff; }
+    #s3-t1 { top: 622px; font: 400 118px/1 Anton, sans-serif; color: #fff; }
+    #s3-t2 { top: 736px; font: 400 92px/1 "Bebas Neue", sans-serif; letter-spacing: .08em;
       background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
       background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .s3-ln { position: absolute; top: 790px; height: 2px; width: 230px; background: #d4af37; }
+    .s3-ln { position: absolute; top: 860px; height: 2px; width: 230px; background: #d4af37; }
     #s3-ln1 { left: 310px; transform-origin: 100% 50%; } #s3-ln2 { left: 540px; transform-origin: 0% 50%; }
-    #s3-tag { top: 812px; font: 400 32px/1 Inter, sans-serif; letter-spacing: .06em; color: #fff; }
+    #s3-tag { top: 880px; font: 400 28px/1 Inter, sans-serif; letter-spacing: .06em; color: #fff; }
     #s3-tag span { display: inline-block; }
     #s3-tag i { font-style: normal; color: #d4af37; padding: 0 .4em; }
     /* demonstration credit — lower third, left-aligned inside 120–780 */
+    #s3-logo { position: absolute; left: 427px; top: 300px; width: 226px; height: 256px; border-radius: 22px; background: #fff;
+      box-shadow: 0 0 0 3px #d4af37, 0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(212,175,55,.25); overflow: hidden; }
+    #s3-logo img { position: absolute; left: 22px; top: 18px; width: 182px; height: 220px; object-fit: contain; }
+    #s3-logo-sh { position: absolute; left: -120px; top: -20px; width: 90px; height: 320px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85), rgba(255,255,255,0)); }
+    #s3-chips { position: absolute; left: 120px; top: 968px; width: 660px; }
+    #s3-chips-k { font: 700 28px/1 Montserrat, sans-serif; letter-spacing: .2em; color: #d4af37; text-shadow: 0 2px 12px rgba(0,0,0,.8); opacity: 0; }
+    .s3-chip { transform-origin: 0 50%; display: block; width: max-content; margin-top: 14px; padding: 12px 22px 11px 18px; border-left: 4px solid #d4af37;
+      background: rgba(7,20,38,.82); font: 400 50px/1 "Bebas Neue", sans-serif; letter-spacing: .06em; color: #fff; opacity: 0; }
+    .s3-chip i { font-style: normal; color: #89cfff; font: 600 28px/1 Inter, sans-serif; letter-spacing: 0; padding-left: 14px; }
     #s3-cred { position: absolute; left: 120px; top: 1044px; width: 660px; }
     #s3-cred-bar { position: absolute; left: 0; top: -6px; width: 4px; height: 190px; background: #d4af37; transform-origin: 50% 0%; }
     #s3-cred-k { position: absolute; left: 26px; top: -6px; font: 700 28px/1 Montserrat, sans-serif; letter-spacing: .18em; color: #d4af37; white-space: nowrap; }
@@ -31,11 +41,18 @@
     data-composition-variables='[{"id":"participantName","type":"string","label":"Participant credit (verify spelling)","default":"BENG"},{"id":"participantRole","type":"string","label":"Participant line","default":"Participant · Grandmaster Skill Signature"}]'>
     <div id="s3-veil"></div>
     <div id="s3-dip"></div>
+    <div id="s3-logo"><img id="s3-logo-img" src="assets/logos/logo-academy.png" alt="Academy Pak Su Den" /><div id="s3-logo-sh"></div></div>
     <div id="s3-pre" class="s3-c">MASTERCLASS SIGNATURE</div>
     <div id="s3-t1" class="s3-c">GRANDMASTER</div>
     <div id="s3-t2" class="s3-c">SKILL SIGNATURE</div>
     <div id="s3-ln1" class="s3-ln"></div><div id="s3-ln2" class="s3-ln"></div>
     <div id="s3-tag" class="s3-c"><span id="s3-w1">Knowledge.</span><i>·</i><span id="s3-w2">Precision.</span><i>·</i><span id="s3-w3">Mastery.</span></div>
+    <div id="s3-chips">
+      <div id="s3-chips-k">URUTAN TRADISIONAL</div>
+      <div id="s3-c1" class="s3-chip">TEKNIK<i>Technique</i></div>
+      <div id="s3-c2" class="s3-chip">PERSEMBAHAN<i>Performance</i></div>
+      <div id="s3-c3" class="s3-chip">ADAB PERTANDINGAN<i>Competition etiquette</i></div>
+    </div>
     <div id="s3-cred">
       <div id="s3-cred-plate"></div>
       <div id="s3-cred-bar"></div>
@@ -47,6 +64,10 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#s3-dip", { opacity: 1 }, { opacity: 0, duration: 0.5, ease: "power2.out" }, 0);
+    // Academy logo: zoom in past the frame, settle, then a light sweep
+    tl.fromTo("#s3-logo", { opacity: 0, scale: 2.4, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 0.2);
+    tl.fromTo("#s3-logo", { scale: 1 }, { scale: 1.06, duration: 2.9, ease: "none", immediateRender: false }, 0.65);
+    tl.fromTo("#s3-logo-sh", { x: 0 }, { x: 520, duration: 0.8, ease: "power2.inOut" }, 0.75);
     tl.fromTo("#s3-pre", { opacity: 0, scaleX: 1.22 }, { opacity: 1, scaleX: 1, duration: 0.7, ease: "expo.out" }, 0.15);
     tl.fromTo("#s3-t1", { opacity: 0, filter: "blur(12px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.45, ease: "expo.out" }, 0.3);
     tl.fromTo("#s3-t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 0.5);
@@ -57,6 +78,8 @@
       tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, ease: "power3.out" }, 1.5 + i * 0.5);
     });
     tl.fromTo("#s3-tag i", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.7);
+    tl.to("#s3-logo", { opacity: 0, scale: 0.6, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }, 3.6);
+    tl.set("#s3-logo", { visibility: "hidden" }, 4.0);
     tl.to(["#s3-pre", "#s3-t1", "#s3-t2", ".s3-ln", "#s3-tag"], { opacity: 0, filter: "blur(10px)", duration: 0.22, ease: "power3.in", stagger: 0.03 }, 3.62);
     tl.to("#s3-veil", { opacity: 0, duration: 0.3, ease: "power2.inOut" }, 3.75);
     tl.set(["#s3-pre", "#s3-t1", "#s3-t2", ".s3-ln", "#s3-tag"], { visibility: "hidden" }, 4.0);
@@ -68,6 +91,13 @@
     tl.fromTo("#s3-cred-s", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.6);
     tl.to("#s3-cred", { opacity: 0, x: -30, duration: 0.25, ease: "power3.in" }, 6.75);
     tl.set("#s3-cred", { visibility: "hidden" }, 7.0);
+    // 19.2 global: what the masterclass teaches (from the course slide), one chip per click
+    tl.fromTo("#s3-chips-k", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 7.05);
+    ["#s3-c1", "#s3-c2", "#s3-c3"].forEach((c, i) => {
+      tl.fromTo(c, { opacity: 0, scale: 1.25, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 0.22, ease: "expo.out" }, 7.2 + i * 0.5);
+    });
+    tl.to("#s3-chips", { opacity: 0, x: -40, duration: 0.22, ease: "power3.in" }, 9.6);
+    tl.set("#s3-chips", { visibility: "hidden" }, 9.85);
     window.__timelines["s3-masterclass"] = tl;
   </script>
 </template>

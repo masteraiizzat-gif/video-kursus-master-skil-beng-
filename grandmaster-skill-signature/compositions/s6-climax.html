@@ -18,6 +18,10 @@
       background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
       background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
     #s6-b3 { top: 1110px; font: 400 70px/1 "Bebas Neue", sans-serif; letter-spacing: .05em; color: #fff; }
+    #s6-logo { position: absolute; left: 410px; top: 560px; width: 260px; height: 296px; border-radius: 24px; background: #fff; opacity: 0;
+      box-shadow: 0 0 0 4px #d4af37, 0 30px 90px rgba(0,0,0,.6), 0 0 90px rgba(212,175,55,.35); overflow: hidden; }
+    #s6-logo img { position: absolute; left: 26px; top: 21px; width: 208px; height: 254px; object-fit: contain; }
+    #s6-ring { position: absolute; left: 540px; top: 708px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%; border: 6px solid #d4af37; opacity: 0; }
     #s6-out { position: absolute; inset: 0; background: #fff8e6; opacity: 0; }
   </style>
   <div id="root" data-composition-id="s6-climax" data-width="1080" data-height="1920">
@@ -29,6 +33,8 @@
     <div id="s6-b1" class="s6-c"><span id="s6-b1w1" class="s6-w">BUILDING</span> <span id="s6-b1w2" class="s6-w">THE</span> <span id="s6-b1w3" class="s6-w">NEXT</span></div>
     <div id="s6-b2" class="s6-c">GENERATION</div>
     <div id="s6-b3" class="s6-c">OF THERAPISTS.</div>
+    <div id="s6-ring"></div>
+    <div id="s6-logo"><img id="s6-logo-img" src="assets/logos/logo-academy.png" alt="Academy Pak Su Den" /></div>
     <div id="s6-out"></div>
   </div>
   <script>
@@ -45,9 +51,13 @@
     // line two from 68.0
     slam("#s6-b1w1", 8.0); slam("#s6-b1w2", 8.25); slam("#s6-b1w3", 8.5); slam("#s6-b2", 9.0); slam("#s6-b3", 9.5);
     tl.fromTo("#s6-b2", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 1.0, ease: "power2.inOut" }, 9.2);
-    tl.to(["#s6-b1", "#s6-b2", "#s6-b3"], { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, 12.8);
-    tl.to("#s6-low", { opacity: 0, duration: 0.3 }, 12.9);
-    tl.set(["#s6-b1", "#s6-b2", "#s6-b3"], { visibility: "hidden" }, 13.0);
+    tl.to(["#s6-b1", "#s6-b2", "#s6-b3"], { opacity: 0, filter: "blur(10px)", duration: 0.16, ease: "power3.in" }, 11.98);
+    tl.to("#s6-low", { opacity: 0, duration: 0.3 }, 12.0);
+    tl.set(["#s6-b1", "#s6-b2", "#s6-b3"], { visibility: "hidden" }, 12.15);
+    // 72.2 — Academy logo: zoom in from far, ring shock-wave, slow push, then the flash
+    tl.fromTo("#s6-logo", { opacity: 0, scale: 0.2, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.42, ease: "back.out(1.6)" }, 12.2);
+    tl.fromTo("#s6-ring", { opacity: 1, scale: 0.05 }, { opacity: 0, scale: 0.7, duration: 0.6, ease: "power3.out" }, 12.25);
+    tl.fromTo("#s6-logo", { scale: 1 }, { scale: 1.12, duration: 1.2, ease: "power2.in", immediateRender: false }, 12.62);
     tl.fromTo("#s6-out", { opacity: 0 }, { opacity: 0.92, duration: 0.2, ease: "power2.in" }, 13.8);
     window.__timelines["s6-climax"] = tl;
   </script>

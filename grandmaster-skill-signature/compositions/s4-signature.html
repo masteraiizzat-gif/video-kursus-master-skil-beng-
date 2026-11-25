@@ -21,6 +21,11 @@
     .s4-tt.two { font-size: 68px; line-height: .95; white-space: normal; width: 480px; }
     .s4-sub { position: absolute; left: 178px; top: 112px; font: 500 28px/1 Inter, sans-serif; color: #89cfff; white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
     .s4-ring { position: absolute; left: 540px; top: 845px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%; border: 5px solid #d4af37; opacity: 0; }
+    .s4-mk { position: absolute; left: 120px; top: 1100px; height: 110px; opacity: 0; transform-origin: 0 50%; }
+    .s4-mk-dot { position: absolute; left: 0; top: 30px; width: 16px; height: 16px; border-radius: 50%; background: #d4af37; box-shadow: 0 0 0 6px rgba(212,175,55,.25); }
+    .s4-mk-ln { position: absolute; left: 30px; top: 37px; width: 70px; height: 2px; background: #d4af37; transform-origin: 0 50%; }
+    .s4-mk-t { position: absolute; left: 112px; top: 0; padding: 10px 20px 8px; background: rgba(7,20,38,.84); font: 400 64px/1 "Bebas Neue", sans-serif; letter-spacing: .05em; color: #fff; white-space: nowrap; }
+    .s4-mk-s { position: absolute; left: 114px; top: 86px; font: 600 28px/1 Inter, sans-serif; color: #89cfff; white-space: nowrap; text-shadow: 0 2px 10px rgba(0,0,0,.85); }
     #s4-dip { position: absolute; inset: 0; background: #080a0f; opacity: 0; }
   </style>
   <div id="root" data-composition-id="s4-signature" data-width="1080" data-height="1920">
@@ -43,6 +48,13 @@
       <div id="s4-c3-tt" class="s4-tt two">CONTROLLED<br />MOVEMENT</div>
       <div id="s4-c3-sub" class="s4-sub" style="top:150px">Pergerakan yang terkawal</div>
     </div>
+    <div id="s4-mk1" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">PRECISION</div><div class="s4-mk-s">Ketepatan</div></div>
+    <div id="s4-mk2" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">TOUCH</div><div class="s4-mk-s">Sentuhan</div></div>
+    <div id="s4-mk3" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">LEVERAGE</div><div class="s4-mk-s">Tuas badan</div></div>
+    <div id="s4-mk4" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">BALANCE</div><div class="s4-mk-s">Imbangan</div></div>
+    <div id="s4-mk5" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">COUNTER-WEIGHT</div><div class="s4-mk-s">Berat badan</div></div>
+    <div id="s4-mk6" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">CONTROL</div><div class="s4-mk-s">Kawalan</div></div>
+    <div id="s4-mk7" class="s4-mk"><div class="s4-mk-dot"></div><div class="s4-mk-ln"></div><div class="s4-mk-t">FLOW</div><div class="s4-mk-s">Aliran pergerakan</div></div>
     <div id="s4-ring2" class="s4-ring"></div>
     <div id="s4-ring3" class="s4-ring"></div>
     <div id="s4-dip"></div>
@@ -79,6 +91,35 @@
     [["#s4-ring2", 6.0], ["#s4-ring3", 13.0]].forEach(([r, t]) => {
       tl.fromTo(r, { opacity: 1, scale: 0.004 }, { opacity: 0, scale: 0.78, duration: 0.42, ease: "power3.out" }, t);
     });
+    // technique call-outs: zoom in on a click, hold, leave fast
+    tl.fromTo("#s4-mk1", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 2.9);
+    tl.fromTo("#s4-mk1 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 2.95);
+    tl.to("#s4-mk1", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 3.71);
+    tl.set("#s4-mk1", { visibility: "hidden" }, 3.85);
+    tl.fromTo("#s4-mk2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 4.2);
+    tl.fromTo("#s4-mk2 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 4.25);
+    tl.to("#s4-mk2", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 5.71);
+    tl.set("#s4-mk2", { visibility: "hidden" }, 5.85);
+    tl.fromTo("#s4-mk3", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 8.95);
+    tl.fromTo("#s4-mk3 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 9.0);
+    tl.to("#s4-mk3", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 9.809999999999999);
+    tl.set("#s4-mk3", { visibility: "hidden" }, 9.95);
+    tl.fromTo("#s4-mk4", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 10.1);
+    tl.fromTo("#s4-mk4 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 10.15);
+    tl.to("#s4-mk4", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 11.309999999999999);
+    tl.set("#s4-mk4", { visibility: "hidden" }, 11.45);
+    tl.fromTo("#s4-mk5", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 11.6);
+    tl.fromTo("#s4-mk5 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 11.65);
+    tl.to("#s4-mk5", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 12.709999999999999);
+    tl.set("#s4-mk5", { visibility: "hidden" }, 12.85);
+    tl.fromTo("#s4-mk6", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 15.95);
+    tl.fromTo("#s4-mk6 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 16.0);
+    tl.to("#s4-mk6", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 17.31);
+    tl.set("#s4-mk6", { visibility: "hidden" }, 17.45);
+    tl.fromTo("#s4-mk7", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.22, ease: "expo.out" }, 17.6);
+    tl.fromTo("#s4-mk7 .s4-mk-ln", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "expo.out" }, 17.650000000000002);
+    tl.to("#s4-mk7", { opacity: 0, x: -24, duration: 0.14, ease: "power3.in" }, 19.36);
+    tl.set("#s4-mk7", { visibility: "hidden" }, 19.5);
     tl.to(["#s4-idx", ".s4-cn"], { opacity: 0, duration: 0.25 }, 19.5);
     // dip cut into the knowledge transfer
     tl.fromTo("#s4-dip", { opacity: 0 }, { opacity: 0.55, duration: 0.12, ease: "power2.in" }, 19.86);
