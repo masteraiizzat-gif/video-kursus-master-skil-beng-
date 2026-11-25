@@ -127,7 +127,7 @@ html = f'''<!doctype html>
 <html
   lang="ms"
   data-composition-variables='[
-    {{"id":"previewWatermark","type":"boolean","label":"Preview watermark (turn off for the approved final)","default":true}}
+    {{"id":"previewWatermark","type":"boolean","label":"Preview watermark (turn off for the approved final)","default":false}}
   ]'
 >
   <head>

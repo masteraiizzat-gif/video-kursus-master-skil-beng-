@@ -5,6 +5,6 @@
   "scripts": {
     "dev": "npx --yes hyperframes@0.9.94 preview",
     "check": "npx --yes hyperframes@0.9.94 check",
-    "render": "echo 'Final render is locked until the client replies: APPROVED — RENDER FINAL VIDEO' && exit 1"
+    "render": "npx --yes hyperframes@0.9.94 render -q delivery --fps 30 -o exports/grandmaster-skill-signature-final.mp4"
   }
 }
