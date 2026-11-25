@@ -1,0 +1,54 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue.ttf") format("truetype"); }
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton.ttf") format("truetype"); }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s6-flash { position: absolute; inset: 0; background: #fff8e6; }
+    #s6-low { position: absolute; left: 0; right: 0; top: 820px; height: 560px; opacity: 0;
+      background: linear-gradient(180deg, rgba(8,10,15,0) 0%, rgba(8,10,15,.6) 32%, rgba(8,10,15,.66) 76%, rgba(8,10,15,0) 100%); }
+    .s6-c { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; }
+    .s6-w { display: inline-block; }
+    #s6-a1 { top: 900px; font: 400 92px/1 "Bebas Neue", sans-serif; letter-spacing: .06em; color: #fff; }
+    #s6-a2 { top: 990px; font: 400 104px/1 Anton, sans-serif; color: #fff; }
+    #s6-a3 { top: 1104px; font: 400 104px/1 Anton, sans-serif;
+      background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
+      background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #s6-b1 { top: 914px; font: 400 70px/1 "Bebas Neue", sans-serif; letter-spacing: .03em; color: #fff; }
+    #s6-b2 { top: 990px; font: 400 106px/1 Anton, sans-serif;
+      background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
+      background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #s6-b3 { top: 1110px; font: 400 70px/1 "Bebas Neue", sans-serif; letter-spacing: .05em; color: #fff; }
+    #s6-out { position: absolute; inset: 0; background: #fff8e6; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s6-climax" data-width="1080" data-height="1920">
+    <div id="s6-flash"></div>
+    <div id="s6-low"></div>
+    <div id="s6-a1" class="s6-c"><span id="s6-a1w1" class="s6-w">MORE</span> <span id="s6-a1w2" class="s6-w">THAN</span></div>
+    <div id="s6-a2" class="s6-c"><span id="s6-a2w1" class="s6-w">JUST</span></div>
+    <div id="s6-a3" class="s6-c">TECHNIQUE.</div>
+    <div id="s6-b1" class="s6-c"><span id="s6-b1w1" class="s6-w">BUILDING</span> <span id="s6-b1w2" class="s6-w">THE</span> <span id="s6-b1w3" class="s6-w">NEXT</span></div>
+    <div id="s6-b2" class="s6-c">GENERATION</div>
+    <div id="s6-b3" class="s6-c">OF THERAPISTS.</div>
+    <div id="s6-out"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // the drop: exposure flash and punch (the punch is on the shot wrapper in index.html)
+    tl.fromTo("#s6-flash", { opacity: 0.95 }, { opacity: 0, duration: 0.3, ease: "power2.out" }, 0);
+    // line one, one word per beat from 64.0
+    tl.fromTo("#s6-low", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 3.9);
+    const slam = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 1.45, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.16, ease: "expo.out" }, t);
+    slam("#s6-a1w1", 4.0); slam("#s6-a1w2", 4.25); slam("#s6-a2w1", 4.5); slam("#s6-a3", 5.0);
+    tl.fromTo("#s6-a3", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 0.9, ease: "power2.inOut" }, 5.2);
+    tl.to(["#s6-a1", "#s6-a2", "#s6-a3"], { opacity: 0, filter: "blur(10px)", duration: 0.16, ease: "power3.in" }, 7.62);
+    tl.set(["#s6-a1", "#s6-a2", "#s6-a3"], { visibility: "hidden" }, 7.8);
+    // line two from 68.0
+    slam("#s6-b1w1", 8.0); slam("#s6-b1w2", 8.25); slam("#s6-b1w3", 8.5); slam("#s6-b2", 9.0); slam("#s6-b3", 9.5);
+    tl.fromTo("#s6-b2", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 1.0, ease: "power2.inOut" }, 9.2);
+    tl.to(["#s6-b1", "#s6-b2", "#s6-b3"], { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, 12.8);
+    tl.to("#s6-low", { opacity: 0, duration: 0.3 }, 12.9);
+    tl.set(["#s6-b1", "#s6-b2", "#s6-b3"], { visibility: "hidden" }, 13.0);
+    tl.fromTo("#s6-out", { opacity: 0 }, { opacity: 0.92, duration: 0.2, ease: "power2.in" }, 13.8);
+    window.__timelines["s6-climax"] = tl;
+  </script>
+</template>

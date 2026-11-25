@@ -1,0 +1,369 @@
+{
+ "engine": "faster-whisper large-v3 (CTranslate2, int8), language=ms, word timestamps; pass 2 on loudness-normalised audio with VAD",
+ "speaker_note": "The coaching voice is off camera. It is not confirmed whether it is Pak Su Den or the participant speaking to the client; no speaker name is shown on screen.",
+ "files_without_speech": [
+  "Pak Su Den.mp4 (reference, music only)",
+  "Beng 7 -1",
+  "beng 8",
+  "beng 9",
+  "beng 13",
+  "beng 15",
+  "beng 16",
+  "beng 17",
+  "beng 18",
+  "beng 19",
+  "beng 20",
+  "beng 21",
+  "beng 22"
+ ],
+ "segments": [
+  {
+   "file": "beng 12",
+   "start": 0.0,
+   "end": 0.7,
+   "ms": "Lagi,",
+   "en": "Further.",
+   "importance": "Medium — live coaching cue",
+   "use": "S5 Knowledge Transfer, J-cut under shot 22 (starts 43.6 s)",
+   "animation": "Caption fade-in",
+   "sfx": "Music ducked to 30%",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 12",
+   "start": 0.7,
+   "end": 3.6,
+   "ms": "Ok, tegak badan,",
+   "en": "Straighten your body.",
+   "importance": "High — correction of posture (teacher-to-student)",
+   "use": "S5, subtitle with 'Straighten' in gold",
+   "animation": "Keyword highlight",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 12",
+   "start": 3.6,
+   "end": 4.58,
+   "ms": "badan tegak,",
+   "en": "Keep it upright.",
+   "importance": "Medium — repetition, kept because it is the rhythm of real coaching",
+   "use": "S5",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 12",
+   "start": 4.6,
+   "end": 5.54,
+   "ms": "lagi,",
+   "en": "Further.",
+   "importance": "Medium",
+   "use": "S5",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 12",
+   "start": 5.74,
+   "end": 7.04,
+   "ms": "ok,",
+   "en": "Okay.",
+   "importance": "Low — acknowledgement",
+   "use": "S5",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP (natural flow)"
+  },
+  {
+   "file": "beng 12",
+   "start": 7.22,
+   "end": 7.7,
+   "ms": "turun.",
+   "en": "Now down.",
+   "importance": "Medium — end of movement",
+   "use": "S5, L-cut over B-roll shot 24",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 14",
+   "start": 0.24,
+   "end": 1.16,
+   "ms": "Relaks.",
+   "en": "Relax.",
+   "importance": "High — care for the client",
+   "use": "S5",
+   "animation": "Caption",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 14",
+   "start": 1.38,
+   "end": 2.0,
+   "ms": "Tinggi lagi.",
+   "en": "Higher.",
+   "importance": "High — strongest single coaching word",
+   "use": "S5, 'Higher.' in gold",
+   "animation": "Keyword highlight",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 14",
+   "start": 2.0,
+   "end": 3.36,
+   "ms": "Haa.",
+   "en": "That's it.",
+   "importance": "Medium — positive confirmation (genuine reaction)",
+   "use": "S5",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 14",
+   "start": 4.14,
+   "end": 4.84,
+   "ms": "Ok,",
+   "en": "Okay.",
+   "importance": "Low",
+   "use": "S5",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 14",
+   "start": 4.84,
+   "end": 7.28,
+   "ms": "lepas tu, turunkan dia.",
+   "en": "Then bring it down.",
+   "importance": "High — closes the knowledge-transfer beat",
+   "use": "S5, 'bring it down' in gold",
+   "animation": "Keyword highlight",
+   "sfx": "Music swells back at 59.9 s",
+   "decision": "KEEP"
+  },
+  {
+   "file": "beng 10",
+   "start": 1.5,
+   "end": 2.9,
+   "ms": "Ya.",
+   "en": "Yes.",
+   "importance": "Low — isolated, off-mic",
+   "use": "Not used (falls in the trimmed 0–6.5 s)",
+   "animation": "—",
+   "sfx": "—",
+   "decision": "REMOVE"
+  }
+ ],
+ "words": {
+  "beng_12": [
+   {
+    "w": " Lagi,",
+    "s": 0.0,
+    "e": 0.7,
+    "p": 0.82
+   },
+   {
+    "w": " tegak",
+    "s": 0.7,
+    "e": 3.18,
+    "p": 0.89
+   },
+   {
+    "w": " badan,",
+    "s": 3.18,
+    "e": 3.6,
+    "p": 1.0
+   },
+   {
+    "w": " badan",
+    "s": 3.6,
+    "e": 4.3,
+    "p": 0.76
+   },
+   {
+    "w": " tegak,",
+    "s": 4.3,
+    "e": 4.58,
+    "p": 1.0
+   },
+   {
+    "w": " lagi,",
+    "s": 4.6,
+    "e": 5.54,
+    "p": 1.0
+   },
+   {
+    "w": " ok,",
+    "s": 5.74,
+    "e": 7.04,
+    "p": 0.79
+   },
+   {
+    "w": " turun.",
+    "s": 7.22,
+    "e": 7.7,
+    "p": 0.62
+   }
+  ],
+  "beng_14": [
+   {
+    "w": " Relaks.",
+    "s": 0.76,
+    "e": 1.16,
+    "p": 0.49
+   },
+   {
+    "w": " Tinggi",
+    "s": 1.38,
+    "e": 1.78,
+    "p": 0.99
+   },
+   {
+    "w": " lagi.",
+    "s": 1.78,
+    "e": 1.9,
+    "p": 1.0
+   },
+   {
+    "w": " Lepas",
+    "s": 5.82,
+    "e": 6.22,
+    "p": 0.68
+   },
+   {
+    "w": " tu,",
+    "s": 6.22,
+    "e": 6.32,
+    "p": 0.96
+   },
+   {
+    "w": " turunkan",
+    "s": 6.42,
+    "e": 7.12,
+    "p": 1.0
+   },
+   {
+    "w": " dia.",
+    "s": 7.12,
+    "e": 7.24,
+    "p": 1.0
+   }
+  ],
+  "beng_10": [
+   {
+    "w": " Ya.",
+    "s": 1.5,
+    "e": 2.9,
+    "p": 0.67
+   }
+  ]
+ },
+ "rejected_hallucinations": [
+  {
+   "file": "Beng_7_-1",
+   "start": 0.42,
+   "end": 2.96,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.95
+  },
+  {
+   "file": "Pak_Su_Den",
+   "start": 0.0,
+   "end": 29.98,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.98
+  },
+  {
+   "file": "Pak_Su_Den",
+   "start": 30.0,
+   "end": 34.22,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.4
+  },
+  {
+   "file": "beng_13",
+   "start": 0.0,
+   "end": 8.36,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.95
+  },
+  {
+   "file": "beng_15",
+   "start": 0.0,
+   "end": 5.9,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.95
+  },
+  {
+   "file": "beng_16",
+   "start": 0.0,
+   "end": 16.32,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.92
+  },
+  {
+   "file": "beng_17",
+   "start": 0.0,
+   "end": 5.12,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.95
+  },
+  {
+   "file": "beng_18",
+   "start": 0.0,
+   "end": 18.72,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.93
+  },
+  {
+   "file": "beng_19",
+   "start": 1.2,
+   "end": 15.72,
+   "text": "Terima kasih kerana menonton.",
+   "no_speech_prob": 0.97
+  },
+  {
+   "file": "beng_20",
+   "start": 0.0,
+   "end": 2.68,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.98
+  },
+  {
+   "file": "beng_21",
+   "start": 0.0,
+   "end": 3.72,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.97
+  },
+  {
+   "file": "beng_22",
+   "start": 0.0,
+   "end": 3.36,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.97
+  },
+  {
+   "file": "beng_8",
+   "start": 0.0,
+   "end": 15.38,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.94
+  },
+  {
+   "file": "beng_9",
+   "start": 0.0,
+   "end": 15.02,
+   "text": "Terima kasih kerana menonton!",
+   "no_speech_prob": 0.89
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue.ttf") format("truetype"); }
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton.ttf") format("truetype"); }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s1-scrim { position: absolute; inset: 0;
+      background: radial-gradient(120% 70% at 50% 62%, rgba(8,10,15,0) 0%, rgba(8,10,15,.25) 55%, rgba(8,10,15,.7) 100%),
+                  linear-gradient(180deg, rgba(7,20,38,.0) 30%, rgba(7,20,38,.55) 58%, rgba(7,20,38,.0) 82%); }
+    .s1-line { position: absolute; left: 0; width: 1080px; text-align: center; color: #fff; white-space: nowrap; }
+    #s1-label { top: 318px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .2em; color: #d4af37; }
+    #s1-a1, #s1-a2 { font: 400 148px/1 "Bebas Neue", sans-serif; letter-spacing: .03em;
+      text-shadow: 0 6px 40px rgba(0,0,0,.55); }
+    #s1-a1 { top: 900px; } #s1-a2 { top: 1036px; }
+    #s1-b1 { top: 900px; font: 400 130px/1 Anton, sans-serif; letter-spacing: .01em;
+      background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
+      background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 8px 30px rgba(0,0,0,.6)); }
+    #s1-b2 { top: 1068px; font: 400 116px/1 "Bebas Neue", sans-serif; letter-spacing: .08em; text-shadow: 0 6px 40px rgba(0,0,0,.55); }
+    #s1-rule { position: absolute; top: 1048px; left: 390px; width: 300px; height: 3px; background: #d4af37; transform-origin: 50% 50%; }
+    #s1-flash { position: absolute; inset: 0; background: #fff8e6; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s1-hook" data-width="1080" data-height="1920">
+    <div id="s1-scrim"></div>
+    <div id="s1-label" class="s1-line">GRANDMASTER SKILL SIGNATURE</div>
+    <div id="s1-a1" class="s1-line">SKILL IS</div>
+    <div id="s1-a2" class="s1-line">LEARNED.</div>
+    <div id="s1-b1" class="s1-line">MASTERY</div>
+    <div id="s1-rule"></div>
+    <div id="s1-b2" class="s1-line">IS BUILT.</div>
+    <div id="s1-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // frame 0 is the thumbnail: the first line is already on screen
+    tl.fromTo(["#s1-a1", "#s1-a2"], { opacity: 1, scaleX: 1.06 }, { opacity: 1, scaleX: 1, duration: 0.7, ease: "expo.out" }, 0);
+    tl.to(["#s1-a1", "#s1-a2"], { opacity: 0, filter: "blur(10px)", y: -18, duration: 0.14, ease: "power3.in", stagger: 0.04 }, 1.84);
+    // beat 2.0 — the slam
+    tl.fromTo("#s1-b1", { opacity: 0, scale: 1.38, filter: "blur(16px) drop-shadow(0 8px 30px rgba(0,0,0,.6))" },
+      { opacity: 1, scale: 1, filter: "blur(0px) drop-shadow(0 8px 30px rgba(0,0,0,.6))", duration: 0.2, ease: "expo.out" }, 2.0);
+    tl.fromTo("#s1-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.out" }, 2.08);
+    tl.fromTo("#s1-b2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 2.18);
+    tl.fromTo("#s1-b1", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 0.9, ease: "power2.inOut" }, 2.35);
+    tl.to("#s1-label", { opacity: 0, duration: 0.2 }, 3.5);
+    // leave clean, then an exposure flash carries the cut into the master's scene
+    tl.to(["#s1-b1", "#s1-rule", "#s1-b2"], { opacity: 0, filter: "blur(10px)", duration: 0.16, ease: "power3.in" }, 3.66);
+    tl.fromTo("#s1-flash", { opacity: 0 }, { opacity: 0.9, duration: 0.17, ease: "power2.in" }, 3.82);
+    tl.set(["#s1-a1", "#s1-a2", "#s1-b1", "#s1-b2", "#s1-rule"], { visibility: "hidden" }, 3.99);
+    window.__timelines["s1-hook"] = tl;
+  </script>
+</template>

@@ -1,0 +1,23 @@
+{
+ "preset": "skin-soft",
+ "intensity": 0.5,
+ "adjust": {
+  "contrast": 0.05,
+  "highlights": -0.08,
+  "shadows": 0.04,
+  "saturation": -0.04,
+  "temperature": 0.02
+ },
+ "wheels": {
+  "shadows": {
+   "hue": 215,
+   "amount": 0.06,
+   "level": 0
+  }
+ },
+ "details": {
+  "vignette": 0.12,
+  "grain": 0.06,
+  "grainSize": 0.3
+ }
+}

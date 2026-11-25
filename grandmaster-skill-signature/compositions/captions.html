@@ -1,0 +1,38 @@
+<template>
+  <style>
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter.ttf") format("truetype"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: visible; }
+    /* bottom edge of every group sits at y 1240 (≥ 672 px from the bottom: clear of TikTok / Reels UI) */
+    .cap { position: absolute; left: 300px; width: 480px; top: 1104px; height: 136px; text-align: center; opacity: 0;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center; overflow: visible; }
+    .cap .en { font: 700 44px/1.12 Inter, sans-serif; color: #fff; letter-spacing: -.005em;
+      text-shadow: 0 2px 4px rgba(0,0,0,.85), 0 0 22px rgba(0,0,0,.55); }
+    .cap .ms { margin-top: 8px; font: italic 400 28px/1.1 Inter, sans-serif; color: rgba(137,207,255,.95);
+      text-shadow: 0 2px 4px rgba(0,0,0,.85); }
+    .cap .k { color: #d4af37; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <!-- times are local to this composition: global = 43.6 + t. Source: transcripts/transcript.json -->
+    <div id="cap-01" class="cap" data-t="0.10,1.30"><div class="en">Further.</div><div class="ms">Lagi.</div></div>
+    <div id="cap-02" class="cap" data-t="2.30,3.60"><div class="en"><span class="k">Straighten</span> your body.</div><div class="ms">Ok, tegak badan.</div></div>
+    <div id="cap-03" class="cap" data-t="3.60,4.60"><div class="en">Keep it upright.</div><div class="ms">Badan tegak.</div></div>
+    <div id="cap-04" class="cap" data-t="4.60,5.60"><div class="en">Further.</div><div class="ms">Lagi.</div></div>
+    <div id="cap-05" class="cap" data-t="5.70,7.00"><div class="en">Okay.</div><div class="ms">Ok.</div></div>
+    <div id="cap-06" class="cap" data-t="7.15,7.95"><div class="en">Now down.</div><div class="ms">Turun.</div></div>
+    <div id="cap-07" class="cap" data-t="8.70,9.65"><div class="en">Relax.</div><div class="ms">Relaks.</div></div>
+    <div id="cap-08" class="cap" data-t="9.70,10.70"><div class="en"><span class="k">Higher.</span></div><div class="ms">Tinggi lagi.</div></div>
+    <div id="cap-09" class="cap" data-t="10.70,11.80"><div class="en">That's it.</div><div class="ms">Haa.</div></div>
+    <div id="cap-10" class="cap" data-t="12.50,13.20"><div class="en">Okay.</div><div class="ms">Ok.</div></div>
+    <div id="cap-11" class="cap" data-t="13.20,15.70"><div class="en">Then <span class="k">bring it down.</span></div><div class="ms">Lepas tu, turunkan dia.</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    document.querySelectorAll("#root .cap").forEach((g) => {
+      const [a, b] = g.dataset.t.split(",").map(Number);
+      tl.fromTo(g, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, a);
+      tl.to(g, { opacity: 0, duration: 0.1, ease: "power2.in" }, b - 0.1);
+      tl.set(g, { opacity: 0, visibility: "hidden" }, b);
+    });
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

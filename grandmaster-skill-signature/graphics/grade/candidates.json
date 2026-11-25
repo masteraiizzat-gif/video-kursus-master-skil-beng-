@@ -1,0 +1,100 @@
+[
+ {
+  "label": "A \u00b7 Mastery (navy shadows, gold highlights)",
+  "grading": {
+   "preset": "deep-contrast",
+   "intensity": 0.4,
+   "adjust": {
+    "contrast": 0.06,
+    "highlights": -0.12,
+    "shadows": 0.05,
+    "blacks": -0.04,
+    "saturation": -0.05,
+    "vibrance": 0.03,
+    "temperature": 0.03
+   },
+   "wheels": {
+    "shadows": {
+     "hue": 215,
+     "amount": 0.1,
+     "level": -0.02
+    },
+    "highlights": {
+     "hue": 42,
+     "amount": 0.07,
+     "level": 0
+    }
+   },
+   "secondaries": [
+    {
+     "key": {
+      "hue": {
+       "center": 205,
+       "range": 28,
+       "softness": 16
+      },
+      "saturation": {
+       "min": 0.25,
+       "max": 1,
+       "softness": 0.1
+      },
+      "luma": {
+       "min": 0.1,
+       "max": 0.95,
+       "softness": 0.1
+      }
+     },
+     "correction": {
+      "saturation": -0.18,
+      "luma": -0.08
+     }
+    },
+    {
+     "key": {
+      "hue": {
+       "center": 140,
+       "range": 30,
+       "softness": 15
+      },
+      "saturation": {
+       "min": 0.2,
+       "max": 1,
+       "softness": 0.1
+      },
+      "luma": {
+       "min": 0.05,
+       "max": 0.95,
+       "softness": 0.1
+      }
+     },
+     "correction": {
+      "saturation": -0.3,
+      "hueShift": 12
+     }
+    }
+   ],
+   "details": {
+    "vignette": 0.22,
+    "grain": 0.1,
+    "grainSize": 0.3
+   }
+  }
+ },
+ {
+  "label": "B \u00b7 Natural portrait (restrained)",
+  "grading": {
+   "preset": "skin-soft",
+   "intensity": 0.6,
+   "adjust": {
+    "highlights": -0.1,
+    "shadows": 0.08,
+    "temperature": 0.04,
+    "vibrance": 0.02,
+    "contrast": 0.04
+   },
+   "details": {
+    "vignette": 0.05
+   }
+  }
+ }
+]

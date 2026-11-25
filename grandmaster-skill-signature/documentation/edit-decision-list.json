@@ -1,0 +1,79 @@
+{
+  "project": "GRANDMASTER SKILL SIGNATURE — PAK SU DEN",
+  "concept": "THE ART OF MASTERY",
+  "canvas": { "width": 1080, "height": 1920, "fps": 30, "duration": 86.0 },
+  "grid": { "bpm": 120, "beat_s": 0.5, "bar_s": 2.0, "note": "Every cut lands on a beat of the score (music/score-the-art-of-mastery.wav)." },
+  "media_root": "assets/footage/",
+  "photo_root": "assets/photos/",
+  "scenes": [
+    { "id": "s1-hook", "name": "The Hook", "start": 0, "end": 4 },
+    { "id": "s2-master", "name": "The Master", "start": 4, "end": 12 },
+    { "id": "s3-masterclass", "name": "The Masterclass", "start": 12, "end": 24 },
+    { "id": "s4-signature", "name": "The Signature Techniques", "start": 24, "end": 44 },
+    { "id": "s5-knowledge", "name": "The Knowledge Transfer", "start": 44, "end": 60 },
+    { "id": "s6-climax", "name": "The Climax", "start": 60, "end": 74 },
+    { "id": "s7-legacy", "name": "The Legacy", "start": 74, "end": 86 }
+  ],
+  "shots": [
+    { "n": 1,  "scene": "s1-hook", "start": 0.0,  "dur": 0.5, "src": "beng_10",  "in": 17.4, "rate": 1.0, "why": "Frame 0 / thumbnail: symmetrical crossed-arm stretch, the most graphic shape in the footage" },
+    { "n": 2,  "scene": "s1-hook", "start": 0.5,  "dur": 0.5, "src": "beng_8",   "in": 6.2,  "rate": 1.0, "why": "Lunge pull — diagonal energy" },
+    { "n": 3,  "scene": "s1-hook", "start": 1.0,  "dur": 0.5, "src": "beng_22",  "in": 7.6,  "rate": 1.0, "why": "Face in effort — human focus" },
+    { "n": 4,  "scene": "s1-hook", "start": 1.5,  "dur": 0.5, "src": "beng_9",   "in": 2.0,  "rate": 1.0, "why": "Lean-back pull — power" },
+    { "n": 5,  "scene": "s1-hook", "start": 2.0,  "dur": 2.0, "src": "beng_7-1", "in": 1.0,  "rate": 0.5, "ramp": [[0, 1.0], [0.3, 0.45]], "why": "Speed-ramp into slow-motion palm press, frontal: lands 'MASTERY IS BUILT.'" },
+
+    { "n": 6,  "scene": "s2-master", "start": 4.0,  "dur": 4.0, "photo": "class-teach", "why": "Pak Su Den teaching, his own masterclass slide behind him — the only verified footage of the master" },
+    { "n": 7,  "scene": "s2-master", "start": 8.0,  "dur": 4.0, "photo": "class-wide",  "why": "Wide classroom: master and participant — sets up the student" },
+
+    { "n": 8,  "scene": "s3-masterclass", "start": 12.0, "dur": 4.0, "src": "beng_18",  "in": 2.0,  "rate": 0.5, "why": "Calm close-up of hands reading the back — plate for the main title" },
+    { "n": 9,  "scene": "s3-masterclass", "start": 16.0, "dur": 2.0, "src": "beng_7-1", "in": 3.6,  "rate": 1.0, "why": "Frontal hero of the participant — demonstration credit" },
+    { "n": 10, "scene": "s3-masterclass", "start": 18.0, "dur": 2.0, "src": "beng_15",  "in": 1.0,  "rate": 1.0, "why": "Seated arm technique, face visible" },
+    { "n": 11, "scene": "s3-masterclass", "start": 20.0, "dur": 2.0, "src": "beng_21",  "in": 3.8,  "rate": 1.0, "why": "Palm work, clean blue wall (only usable part of beng 21)" },
+    { "n": 12, "scene": "s3-masterclass", "start": 22.0, "dur": 2.0, "src": "beng_16",  "in": 8.6,  "rate": 1.0, "why": "Kneeling arm work facing camera" },
+
+    { "n": 13, "scene": "s4-signature", "start": 24.0, "dur": 2.0, "src": "beng_13", "in": 0.6,  "rate": 0.5, "chapter": "01 HAND POSITIONING", "why": "Slow-motion hand placement" },
+    { "n": 14, "scene": "s4-signature", "start": 26.0, "dur": 2.0, "src": "beng_18", "in": 9.0,  "rate": 1.0, "why": "Palpation close-up, profile" },
+    { "n": 15, "scene": "s4-signature", "start": 28.0, "dur": 2.0, "src": "beng_19", "in": 3.5,  "rate": 1.0, "why": "Hands on back — precision" },
+    { "n": 16, "scene": "s4-signature", "start": 30.0, "dur": 2.5, "src": "beng_22", "in": 0.5,  "rate": 1.0, "chapter": "02 BODY MECHANICS", "why": "Lunge with leg over shoulder — whole-body leverage" },
+    { "n": 17, "scene": "s4-signature", "start": 32.5, "dur": 1.5, "src": "beng_8",  "in": 6.0,  "rate": 1.0, "why": "Standing on the table, diagonal pull" },
+    { "n": 18, "scene": "s4-signature", "start": 34.0, "dur": 1.5, "src": "beng_17", "in": 1.6,  "rate": 1.0, "why": "Low angle — stance and balance" },
+    { "n": 19, "scene": "s4-signature", "start": 35.5, "dur": 1.5, "src": "beng_9",  "in": 1.4,  "rate": 1.0, "why": "Counter-weight lean" },
+    { "n": 20, "scene": "s4-signature", "start": 37.0, "dur": 2.5, "src": "beng_16", "in": 1.0,  "rate": 0.5, "chapter": "03 CONTROLLED MOVEMENT", "why": "Slow-motion twist stretch" },
+    { "n": 21, "scene": "s4-signature", "start": 39.5, "dur": 2.0, "src": "beng_15", "in": 5.0,  "rate": 1.0, "why": "Arm cross — control" },
+    { "n": 22, "scene": "s4-signature", "start": 41.5, "dur": 2.5, "src": "beng_10", "in": 8.0,  "rate": 0.5, "why": "Slow-motion crossed reach, riser into the turn" },
+
+    { "n": 23, "scene": "s5-knowledge", "start": 44.0, "dur": 7.5, "src": "beng_12", "in": 0.4,  "rate": 1.0, "audio": "J-cut: coaching voice starts 43.6 under shot 22", "why": "Real coaching: 'Lagi, tegak badan…'" },
+    { "n": 24, "scene": "s5-knowledge", "start": 51.5, "dur": 0.5, "src": "beng_13", "in": 6.0,  "rate": 1.0, "audio": "L-cut: 'turun' carries over this cutaway", "why": "B-roll covers the change of shot" },
+    { "n": 25, "scene": "s5-knowledge", "start": 52.0, "dur": 8.0, "src": "beng_14", "in": 0.0,  "rate": 1.0, "why": "Real coaching: 'Relaks. Tinggi lagi… Lepas tu, turunkan dia.'" },
+
+    { "n": 26, "scene": "s6-climax", "start": 60.0, "dur": 1.0, "src": "beng_10", "in": 17.2, "rate": 1.0, "why": "Drop: return of the opening shape (book-end)" },
+    { "n": 27, "scene": "s6-climax", "start": 61.0, "dur": 0.5, "src": "beng_8",  "in": 12.8, "rate": 1.0 },
+    { "n": 28, "scene": "s6-climax", "start": 61.5, "dur": 0.5, "src": "beng_22", "in": 7.2,  "rate": 1.0 },
+    { "n": 29, "scene": "s6-climax", "start": 62.0, "dur": 1.0, "src": "beng_9",  "in": 9.5,  "rate": 1.0 },
+    { "n": 30, "scene": "s6-climax", "start": 63.0, "dur": 0.5, "src": "beng_17", "in": 2.0,  "rate": 1.0 },
+    { "n": 31, "scene": "s6-climax", "start": 63.5, "dur": 0.5, "src": "beng_16", "in": 11.0, "rate": 1.0 },
+    { "n": 32, "scene": "s6-climax", "start": 64.0, "dur": 2.0, "src": "beng_10", "in": 8.4,  "rate": 0.5, "why": "Under 'MORE THAN JUST TECHNIQUE.'" },
+    { "n": 33, "scene": "s6-climax", "start": 66.0, "dur": 0.5, "src": "beng_22", "in": 8.4,  "rate": 1.0 },
+    { "n": 34, "scene": "s6-climax", "start": 66.5, "dur": 0.5, "src": "beng_13", "in": 7.5,  "rate": 1.0 },
+    { "n": 35, "scene": "s6-climax", "start": 67.0, "dur": 0.5, "src": "beng_8",  "in": 7.0,  "rate": 1.0 },
+    { "n": 36, "scene": "s6-climax", "start": 67.5, "dur": 0.5, "src": "beng_15", "in": 7.0,  "rate": 1.0 },
+    { "n": 37, "scene": "s6-climax", "start": 68.0, "dur": 2.0, "src": "beng_19", "in": 9.0,  "rate": 1.0, "why": "Expressive face and hands under 'BUILDING THE NEXT GENERATION'" },
+    { "n": 38, "scene": "s6-climax", "start": 70.0, "dur": 1.0, "src": "beng_7-1", "in": 5.0, "rate": 1.0 },
+    { "n": 39, "scene": "s6-climax", "start": 71.0, "dur": 1.0, "src": "beng_9",  "in": 12.0, "rate": 1.0 },
+    { "n": 40, "scene": "s6-climax", "start": 72.0, "dur": 2.0, "src": "beng_10", "in": 18.4, "rate": 0.5, "why": "Slow-motion hold of the crossed-arm shape" },
+
+    { "n": 41, "scene": "s7-legacy", "start": 74.0, "dur": 6.0, "photo": "certificate", "why": "Master hands the certificate to the participant — the legacy beat" },
+    { "n": 42, "scene": "s7-legacy", "start": 80.0, "dur": 6.0, "card": "end-card", "why": "Brand lockup, organisation, tagline" }
+  ],
+  "dialogue": [
+    { "src": "beng_12", "start": 43.6, "in": 0.0, "dur": 7.7, "fade_out": 0.3 },
+    { "src": "beng_14", "start": 52.0, "in": 0.0, "dur": 8.0, "fade_out": 0.6 }
+  ],
+  "removed": [
+    { "src": "beng 20", "reason": "Camera dropped: floor and carpet for 2.6 of 3.4 s; no usable picture" },
+    { "src": "beng 21 0.0–3.6", "reason": "Camera handling: floor and blur" },
+    { "src": "beng 10 0.0–6.5", "reason": "Therapist's back to camera, repetitive kneading — no readable technique" },
+    { "src": "beng 18 / beng 19 long middles", "reason": "Repeated palpation; best 2 s kept of each" },
+    { "src": "All native ambience outside the two coaching clips", "reason": "Fan/room hiss with no speech; replaced by the score" },
+    { "src": "Whisper 'Terima kasih kerana menonton!' segments", "reason": "Known Whisper hallucination on non-speech (no_speech_prob ≥ 0.86); not real dialogue" }
+  ]
+}

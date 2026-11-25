@@ -1,0 +1,41 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue.ttf") format("truetype"); }
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton.ttf") format("truetype"); }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s5-dip { position: absolute; inset: 0; background: #080a0f; }
+    #s5-low { position: absolute; left: 0; right: 0; top: 800px; height: 560px;
+      background: linear-gradient(180deg, rgba(7,20,38,0) 0%, rgba(7,20,38,.58) 30%, rgba(7,20,38,.66) 75%, rgba(7,20,38,0) 100%); }
+    .s5-c { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; }
+    #s5-k { top: 812px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .16em; color: #89cfff; }
+    .s5-big { top: 878px; font: 400 96px/1 Anton, sans-serif; color: #fff; text-shadow: 0 4px 24px rgba(0,0,0,.55); }
+    .s5-gold { top: 984px; font: 400 64px/1 "Bebas Neue", sans-serif; letter-spacing: .1em; color: #d4af37; text-shadow: 0 3px 18px rgba(0,0,0,.6); }
+  </style>
+  <div id="root" data-composition-id="s5-knowledge" data-width="1080" data-height="1920">
+    <div id="s5-low"></div>
+    <div id="s5-k" class="s5-c">KNOWLEDGE TRANSFER</div>
+    <div id="s5-a1" class="s5-c s5-big">KNOWLEDGE</div>
+    <div id="s5-a2" class="s5-c s5-gold">BECOMES SKILL.</div>
+    <div id="s5-b1" class="s5-c s5-big">SKILL</div>
+    <div id="s5-b2" class="s5-c s5-gold">BECOMES MASTERY.</div>
+    <div id="s5-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s5-dip", { opacity: 0.55 }, { opacity: 0, duration: 0.3, ease: "power2.out" }, 0);
+    tl.fromTo("#s5-k", { opacity: 0, scaleX: 1.22 }, { opacity: 1, scaleX: 1, duration: 0.7, ease: "expo.out" }, 0.3);
+    tl.to("#s5-k", { opacity: 0, duration: 0.25 }, 4.4);
+    // per word from light grey to ink — a quieter entrance for the teaching beat
+    tl.fromTo("#s5-a1", { opacity: 0, color: "#7f8a99", filter: "blur(4px)" }, { opacity: 1, color: "#ffffff", filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 1.0);
+    tl.fromTo("#s5-a2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 1.5);
+    tl.to(["#s5-a1", "#s5-a2"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 4.6);
+    tl.set(["#s5-a1", "#s5-a2"], { visibility: "hidden" }, 4.85);
+    tl.fromTo("#s5-b1", { opacity: 0, color: "#7f8a99", filter: "blur(4px)" }, { opacity: 1, color: "#ffffff", filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 10.3);
+    tl.fromTo("#s5-b2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 10.8);
+    tl.to(["#s5-b1", "#s5-b2"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 15.55);
+    tl.to("#s5-low", { opacity: 0, duration: 0.3 }, 15.6);
+    tl.set(["#s5-b1", "#s5-b2"], { visibility: "hidden" }, 15.8);
+    window.__timelines["s5-knowledge"] = tl;
+  </script>
+</template>

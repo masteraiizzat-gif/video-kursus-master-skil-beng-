@@ -1,0 +1,87 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue.ttf") format("truetype"); }
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton.ttf") format("truetype"); }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter.ttf") format("truetype"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s4-low { position: absolute; left: 0; right: 0; top: 880px; height: 520px; background: linear-gradient(180deg, rgba(7,20,38,0) 0%, rgba(7,20,38,.62) 45%, rgba(7,20,38,.62) 70%, rgba(7,20,38,0) 100%); opacity: 0; }
+    /* precision frame: thin viewfinder corners, the only persistent graphic */
+    .s4-cn { position: absolute; width: 46px; height: 46px; border: 0 solid rgba(137,207,255,.75); }
+    #s4-cn1 { left: 120px; top: 300px; border-left-width: 2px; border-top-width: 2px; }
+    #s4-cn2 { left: 914px; top: 300px; border-right-width: 2px; border-top-width: 2px; }
+    #s4-cn3 { left: 120px; top: 1202px; border-left-width: 2px; border-bottom-width: 2px; }
+    #s4-cn4 { left: 914px; top: 1202px; border-right-width: 2px; border-bottom-width: 2px; }
+    #s4-idx { position: absolute; left: 182px; top: 308px; padding: 9px 14px 8px; background: rgba(7,20,38,.82); font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .14em; color: #ffffff; white-space: nowrap; }
+    #s4-idx b { color: #d4af37; font-weight: 700; }
+    .s4-ch { position: absolute; left: 120px; top: 1010px; width: 660px; height: 230px; }
+    .s4-num { position: absolute; left: 0; top: 0; font: 400 150px/1 Anton, sans-serif; color: transparent; -webkit-text-stroke: 2px #d4af37; }
+    .s4-bar { position: absolute; left: 150px; top: 18px; width: 3px; height: 130px; background: #d4af37; transform-origin: 50% 0; }
+    .s4-tt { position: absolute; left: 176px; top: 22px; transform-origin: 0 50%; font: 400 80px/1 "Bebas Neue", sans-serif; letter-spacing: .02em; color: #fff; white-space: nowrap; text-shadow: 0 4px 24px rgba(0,0,0,.6); }
+    .s4-tt.two { font-size: 68px; line-height: .95; white-space: normal; width: 480px; }
+    .s4-sub { position: absolute; left: 178px; top: 112px; font: 500 28px/1 Inter, sans-serif; color: #89cfff; white-space: nowrap; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
+    .s4-ring { position: absolute; left: 540px; top: 845px; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%; border: 5px solid #d4af37; opacity: 0; }
+    #s4-dip { position: absolute; inset: 0; background: #080a0f; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s4-signature" data-width="1080" data-height="1920">
+    <div id="s4-low"></div>
+    <div id="s4-cn1" class="s4-cn"></div><div id="s4-cn2" class="s4-cn"></div><div id="s4-cn3" class="s4-cn"></div><div id="s4-cn4" class="s4-cn"></div>
+    <div id="s4-idx">SIGNATURE TECHNIQUE <b id="s4-idx-n">01</b> / 03</div>
+
+    <div id="s4-c1" class="s4-ch">
+      <div id="s4-c1-num" class="s4-num">01</div><div id="s4-c1-bar" class="s4-bar"></div>
+      <div id="s4-c1-tt" class="s4-tt">HAND POSITIONING</div>
+      <div id="s4-c1-sub" class="s4-sub">Kedudukan tangan yang tepat</div>
+    </div>
+    <div id="s4-c2" class="s4-ch">
+      <div id="s4-c2-num" class="s4-num">02</div><div id="s4-c2-bar" class="s4-bar"></div>
+      <div id="s4-c2-tt" class="s4-tt">BODY MECHANICS</div>
+      <div id="s4-c2-sub" class="s4-sub">Kekuatan dari seluruh badan</div>
+    </div>
+    <div id="s4-c3" class="s4-ch">
+      <div id="s4-c3-num" class="s4-num">03</div><div id="s4-c3-bar" class="s4-bar"></div>
+      <div id="s4-c3-tt" class="s4-tt two">CONTROLLED<br />MOVEMENT</div>
+      <div id="s4-c3-sub" class="s4-sub" style="top:150px">Pergerakan yang terkawal</div>
+    </div>
+    <div id="s4-ring2" class="s4-ring"></div>
+    <div id="s4-ring3" class="s4-ring"></div>
+    <div id="s4-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.set("#s4-low", { opacity: 0 }, 0);
+    tl.fromTo(".s4-cn", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out", stagger: 0.04 }, 0.05);
+    tl.fromTo("#s4-idx", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    tl.set("#s4-idx-n", { textContent: "02" }, 6.0);
+    tl.set("#s4-idx-n", { textContent: "03" }, 13.0);
+
+    // chapter helper: three different entrances so no two chapters arrive the same way
+    function chapter(id, t, style) {
+      tl.to("#s4-low", { opacity: 1, duration: 0.3, ease: "power2.out" }, t);
+      tl.fromTo(id + "-bar", { scaleY: 0 }, { scaleY: 1, duration: 0.35, ease: "expo.out" }, t + 0.05);
+      tl.fromTo(id + "-num", { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", duration: 0.45, ease: "expo.out" }, t + 0.1);
+      if (style === "mask") {
+        tl.fromTo(id + "-tt", { clipPath: "inset(0 0 100% 0)", y: 30 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.45, ease: "expo.out" }, t + 0.2);
+      } else if (style === "blur") {
+        tl.fromTo(id + "-tt", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power3.out" }, t + 0.2);
+      } else {
+        tl.fromTo(id + "-tt", { opacity: 0, scaleX: 1.22 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "expo.out" }, t + 0.2);
+      }
+      tl.fromTo(id + "-sub", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, t + 0.45);
+      tl.to(id, { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, t + 2.45);
+      tl.to("#s4-low", { opacity: 0, duration: 0.3, ease: "power2.in" }, t + 2.45);
+      tl.set(id, { visibility: "hidden" }, t + 2.7);
+    }
+    chapter("#s4-c1", 0.15, "mask");
+    chapter("#s4-c2", 6.15, "blur");
+    chapter("#s4-c3", 13.15, "track");
+    // gold ring rides the edge of each iris transition (shots 16 and 20 open through a circle)
+    [["#s4-ring2", 6.0], ["#s4-ring3", 13.0]].forEach(([r, t]) => {
+      tl.fromTo(r, { opacity: 1, scale: 0.004 }, { opacity: 0, scale: 0.78, duration: 0.42, ease: "power3.out" }, t);
+    });
+    tl.to(["#s4-idx", ".s4-cn"], { opacity: 0, duration: 0.25 }, 19.5);
+    // dip cut into the knowledge transfer
+    tl.fromTo("#s4-dip", { opacity: 0 }, { opacity: 0.55, duration: 0.12, ease: "power2.in" }, 19.86);
+    window.__timelines["s4-signature"] = tl;
+  </script>
+</template>

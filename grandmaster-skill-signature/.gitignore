@@ -1,0 +1,18 @@
+# Client media is kept out of git (public repository) — rebuild with tools/fetch_media.sh
+/source/
+/reference/
+/proxies/
+assets/footage/
+assets/photos/
+assets/audio/dialogue-*.wav
+/audio/
+/preview/
+/exports/
+renders/
+documentation/storyboard/
+graphics/grade/*.png
+.hyperframes/
+node_modules/
+snapshots/
+documentation/studio-preview.png
+.transcode-cache/

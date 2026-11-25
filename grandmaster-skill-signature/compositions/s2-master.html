@@ -1,0 +1,71 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas Neue"; src: url("assets/fonts/BebasNeue.ttf") format("truetype"); }
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton.ttf") format("truetype"); }
+    @font-face { font-family: "Montserrat"; src: url("assets/fonts/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter.ttf") format("truetype"); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s2-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,20,38,.85) 0%, rgba(7,20,38,.35) 34%, rgba(7,20,38,0) 40%, rgba(7,20,38,0) 72%, rgba(7,20,38,.75) 100%); }
+    .s2-c { position: absolute; left: 0; width: 1080px; text-align: center; white-space: nowrap; }
+    #s2-kicker { top: 330px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .45em; color: #d4af37; }
+    #s2-name { top: 384px; font: 400 132px/1 Anton, sans-serif; color: #fff;
+      background: linear-gradient(100deg, #ffffff 0%, #ffffff 40%, #fff1c2 50%, #ffffff 60%, #ffffff 100%);
+      background-size: 280% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 6px 26px rgba(0,0,0,.55)); }
+    #s2-roles { top: 546px; font: 600 28px/1 Montserrat, sans-serif; letter-spacing: .16em; color: #89cfff; }
+    #s2-roles b { color: #d4af37; font-weight: 700; padding: 0 .35em; }
+    #s2-rule { position: absolute; top: 606px; left: 340px; width: 400px; height: 2px;
+      background: linear-gradient(90deg, rgba(212,175,55,0), #d4af37 20%, #d4af37 80%, rgba(212,175,55,0)); }
+    /* corner brackets around the photo card (686–1234) */
+    .s2-br { position: absolute; width: 64px; height: 64px; border-color: #d4af37; border-style: solid; border-width: 0; }
+    #s2-br1 { left: 36px; top: 654px; border-left-width: 3px; border-top-width: 3px; }
+    #s2-br2 { right: 36px; top: 654px; border-right-width: 3px; border-top-width: 3px; }
+    #s2-br3 { left: 36px; top: 1404px; border-left-width: 3px; border-bottom-width: 3px; }
+    #s2-br4 { right: 36px; top: 1404px; border-right-width: 3px; border-bottom-width: 3px; }
+    #s2-award-k { top: 330px; font: 600 28px/1.3 Montserrat, sans-serif; letter-spacing: .22em; color: #89cfff; white-space: normal; }
+    #s2-award-t { top: 420px; font: 400 104px/1 "Bebas Neue", sans-serif; letter-spacing: .04em;
+      background: linear-gradient(100deg, #b8902b 0%, #d4af37 35%, #fff4c9 50%, #d4af37 65%, #a8821f 100%);
+      background-size: 260% 100%; background-position: 120% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #s2-award-d { top: 536px; font: 600 30px/1 Montserrat, sans-serif; letter-spacing: .3em; color: #fff; }
+    #s2-award-d span { color: #89cfff; }
+    #s2-flash { position: absolute; inset: 0; background: #fff8e6; opacity: 0; }
+    #s2-dip { position: absolute; inset: 0; background: #080a0f; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s2-master" data-width="1080" data-height="1920">
+    <div id="s2-shade"></div>
+    <div id="s2-br1" class="s2-br"></div><div id="s2-br2" class="s2-br"></div>
+    <div id="s2-br3" class="s2-br"></div><div id="s2-br4" class="s2-br"></div>
+    <div id="s2-kicker" class="s2-c">THE MASTER</div>
+    <div id="s2-name" class="s2-c">PAK SU DEN</div>
+    <div id="s2-roles" class="s2-c">FOUNDER<b>•</b>THERAPIST<b>•</b>TRAINER</div>
+    <div id="s2-rule"></div>
+    <div id="s2-award-k" class="s2-c">WORLD HOLISTIC MASSAGE<br />CHAMPIONSHIP</div>
+    <div id="s2-award-t" class="s2-c">OVERALL WINNER</div>
+    <div id="s2-award-d" class="s2-c">Singapore <span>·</span> 2025</div>
+    <div id="s2-flash"></div>
+    <div id="s2-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s2-flash", { opacity: 0.9 }, { opacity: 0, duration: 0.28, ease: "power2.out" }, 0);
+    tl.fromTo(".s2-br", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out", stagger: 0.05 }, 0.1);
+    // name: per-letter feel via tracking collapse, then a light sweep
+    tl.fromTo("#s2-kicker", { opacity: 0, scaleX: 1.22 }, { opacity: 1, scaleX: 1, duration: 0.6, ease: "expo.out" }, 0.25);
+    tl.fromTo("#s2-name", { opacity: 0, y: 40, filter: "blur(10px) drop-shadow(0 6px 26px rgba(0,0,0,.55))" },
+      { opacity: 1, y: 0, filter: "blur(0px) drop-shadow(0 6px 26px rgba(0,0,0,.55))", duration: 0.5, ease: "expo.out" }, 0.45);
+    tl.fromTo("#s2-name", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 1.1, ease: "power2.inOut" }, 1.0);
+    tl.fromTo("#s2-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, 0.75);
+    tl.fromTo("#s2-roles", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, 0.95);
+    tl.to(["#s2-kicker", "#s2-name", "#s2-roles", "#s2-rule"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in", stagger: 0.03 }, 3.72);
+    tl.set(["#s2-kicker", "#s2-name", "#s2-roles", "#s2-rule"], { visibility: "hidden" }, 4.0);
+    // 8.0 global: the photo changes to the classroom; the award line (from the academy's award poster)
+    tl.fromTo("#s2-award-k", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 4.25);
+    tl.fromTo("#s2-award-t", { opacity: 0, scale: 1.12, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 4.4);
+    tl.fromTo("#s2-award-t", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 1.0, ease: "power2.inOut" }, 4.8);
+    tl.fromTo("#s2-award-d", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.75);
+    tl.to(["#s2-award-k", "#s2-award-t", "#s2-award-d", ".s2-br"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 7.55);
+    // dip cut into the title
+    tl.fromTo("#s2-dip", { opacity: 0 }, { opacity: 1, duration: 0.22, ease: "power2.in" }, 7.78);
+    window.__timelines["s2-master"] = tl;
+  </script>
+</template>
