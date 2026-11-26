@@ -82,3 +82,9 @@ What changed from v1:
 3. **Graphics and mentions**: the 2025 award stack (Overall Winner Singapore, Best Performance Singapore, 3rd Place Paris, 1st Place Malaysia — read from the poster in a photo, **to be confirmed**), the course topics from the class slide (Teknik, Persembahan, Adab Pertandingan), and seven technique call-outs (Precision, Touch, Leverage, Balance, Counter-weight, Control, Flow).
 4. **Sound**: all synthetic whooshes and sparkles removed. Recorded mouse clicks and key presses with small pitch and level variation on each graphic; low impacts only on the big moments.
 5. **Score v2**: still original and self-composed, but with humanised timing and velocity on the drums, hand claps on the backbeats, tom fills, darker and quieter braams, and strings in place of the synth choir.
+
+## 60-second WhatsApp version — 26 Nov 2026
+
+`exports/grandmaster-skill-signature-60s-WhatsApp.mp4`: 60.0 s exactly (fits a WhatsApp Status), 1080 × 1920, H.264 CRF 21 max 5 Mbps, AAC 160 kbps 48 kHz, faststart, 30 MB, −12.8 LUFS.
+Cut from the v2 master with `tools/cut_60s.sh` (no re-render): 0–22 + 24–28 + 52–86. Splices are on bar downbeats and existing shot cuts.
+Dropped: signature techniques 02–03 and the first coaching take (KNOWLEDGE BECOMES SKILL). Kept: both logos, the awards, the BENG credit, the climax and the end card.
